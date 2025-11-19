@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SCES-2026 - Student's Conference on Engineering and Systems</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/important-dates.css">
-    <link rel="stylesheet" href="assets/css/simple-section.css">
-    <link rel="stylesheet" href="assets/css/guidelines.css">
-    <link rel="stylesheet" href="assets/css/technical-track.css">
-    <link rel="stylesheet" href="assets/css/contact-us.css">
+    
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/important-dates.css">
+    <link rel="stylesheet" href="./assets/css/simple-section.css">
+    <link rel="stylesheet" href="./assets/css/guidelines.css">
+    <link rel="stylesheet" href="./assets/css/technical-track.css">
+    <link rel="stylesheet" href="./assets/css/contact-us.css">
 </head>
 <body>
     <!-- Top Navbar -->
     <nav class="top-navbar">
         <div class="nav-container">
             <div class="nav-left">
-                <img src="assets/images/logo.png" alt="SCES Logo" class="nav-logo">
+                <img src="./assets/images/logo.png" alt="SCES Logo" class="nav-logo">
                 <span class="nav-brand">SCES</span>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
@@ -25,7 +26,7 @@
                 </svg>
             </button>
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link scroll-link">Home</a></li>
                 <li><a href="registration.html" class="nav-link">Registration</a></li>
                 <li class="dropdown">
                     <button class="nav-link dropdown-btn">
@@ -80,10 +81,7 @@
                         </svg>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="https://www.ieee.org/" target="_blank">About IEEE</a></li>
-                        <li><a href="http://www.ieeeup.org/" target="_blank">IEEE Uttar Pradesh Section</a></li>
                         <li><a href="http://www.mnnit.ac.in/" target="_blank">MNNIT Allahabad</a></li>
-                        <li><a href="https://www.ieee.org/publications/rights/plagiarism/plagiarism.html" target="_blank">Plagiarism Policy of IEEE</a></li>
                     </ul>
                 </li>
             </ul>
@@ -100,7 +98,7 @@
                 </svg>
             </button>
             <ul class="drawer-nav">
-                <li><a href="index.html" class="drawer-link">Home</a></li>
+                <li><a href="#about" class="drawer-link scroll-link">Home</a></li>
                 <li><a href="registration.html" class="drawer-link">Registration</a></li>
                 <li class="drawer-dropdown">
                     <button class="drawer-link drawer-dropdown-btn">
@@ -164,18 +162,19 @@
             </ul>
             <hr class="drawer-divider">
             <ul class="drawer-sections">
-                <li><button class="sidebar-link active" data-section="about">About</button></li>
-                <li><button class="sidebar-link" onclick="alert('Coming soon')">Program Schedule</button></li>
-                <li><button class="sidebar-link" data-section="keynote-speakers">Keynote Speakers</button></li>
-                <li><button class="sidebar-link" data-section="tutorial-speakers">Tutorial Speakers</button></li>
-                <li><button class="sidebar-link" data-section="track-chair">Track Chair</button></li>
-                <li><button class="sidebar-link" data-section="special-session">Special Session</button></li>
-                <li><button class="sidebar-link" data-section="important-dates">Important Dates</button></li>
-                <li><button class="sidebar-link" data-section="call-for-paper">Call for Paper</button></li>
-                <li><button class="sidebar-link" data-section="guidelines">Guidelines for Paper Submission</button></li>
-                <li><button class="sidebar-link" data-section="camera-ready">Camera Ready Paper Submission</button></li>
-                <li><button class="sidebar-link" data-section="technical-track">Technical Track</button></li>
-                <li><button class="sidebar-link" data-section="contact-us">Contact Us</button></li>
+                <li><a href="#about" class="sidebar-link active scroll-link">About</a></li>
+                <li><a href="#program-schedule" class="sidebar-link scroll-link" onclick="alert('Coming soon'); return false;">Program Schedule</a></li>
+                <li><a href="#keynote-speakers" class="sidebar-link scroll-link">Keynote Speakers</a></li>
+                <li><a href="#tutorial-speakers" class="sidebar-link scroll-link">Tutorial Speakers</a></li>
+                <li><a href="#track-chair" class="sidebar-link scroll-link">Track Chair</a></li>
+                <li><a href="#special-session" class="sidebar-link scroll-link">Special Session</a></li>
+                <li><a href="#important-dates" class="sidebar-link scroll-link">Important Dates</a></li>
+                <li><a href="./assets/files/cfp.pdf" class="sidebar-link" download>Call for Paper</a></li>
+                <li><a href="./assets/files/sces_bronchure.pdf" class="sidebar-link" download>SCES Brochure</a></li>
+                <li><a href="#guidelines" class="sidebar-link scroll-link">Guidelines for Paper Submission</a></li>
+                <li><a href="#camera-ready" class="sidebar-link scroll-link">Camera Ready Paper Submission</a></li>
+                <li><a href="#technical-track" class="sidebar-link scroll-link">Technical Track</a></li>
+                <li><a href="#contact-us" class="sidebar-link scroll-link">Contact Us</a></li>
             </ul>
         </div>
     </div>
@@ -185,27 +184,276 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <ul class="sidebar-nav">
-                <li><button class="sidebar-link active" data-section="about">About</button></li>
-                <li><button class="sidebar-link" onclick="alert('Coming soon')">Program Schedule</button></li>
-                <li><button class="sidebar-link" data-section="keynote-speakers">Keynote Speakers</button></li>
-                <li><button class="sidebar-link" data-section="tutorial-speakers">Tutorial Speakers</button></li>
-                <li><button class="sidebar-link" data-section="track-chair">Track Chair</button></li>
-                <li><button class="sidebar-link" data-section="special-session">Special Session</button></li>
-                <li><button class="sidebar-link" data-section="important-dates">Important Dates</button></li>
-                <li><button class="sidebar-link" data-section="call-for-paper">Call for Paper</button></li>
-                <li><button class="sidebar-link" data-section="guidelines">Guidelines for Paper Submission</button></li>
-                <li><button class="sidebar-link" data-section="camera-ready">Camera Ready Paper Submission</button></li>
-                <li><button class="sidebar-link" data-section="technical-track">Technical Track</button></li>
-                <li><button class="sidebar-link" data-section="contact-us">Contact Us</button></li>
+                <li><a href="#about" class="sidebar-link active scroll-link">About</a></li>
+                <li><a href="#program-schedule" class="sidebar-link scroll-link" onclick="alert('Coming soon'); return false;">Program Schedule</a></li>
+                <li><a href="#keynote-speakers" class="sidebar-link scroll-link">Keynote Speakers</a></li>
+                <li><a href="#tutorial-speakers" class="sidebar-link scroll-link">Tutorial Speakers</a></li>
+                <li><a href="#track-chair" class="sidebar-link scroll-link">Track Chair</a></li>
+                <li><a href="#special-session" class="sidebar-link scroll-link">Special Session</a></li>
+                <li><a href="#important-dates" class="sidebar-link scroll-link">Important Dates</a></li>
+                <li><a href="./assets/files/cfp.pdf" class="sidebar-link" download>Call for Paper</a></li>
+                <li><a href="./assets/files/sces_bronchure.pdf" class="sidebar-link" download>Download Brochure</a></li>
+                <li><a href="#guidelines" class="sidebar-link scroll-link">Guidelines for Paper Submission</a></li>
+                <li><a href="#camera-ready" class="sidebar-link scroll-link">Camera Ready Paper Submission</a></li>
+                <li><a href="#technical-track" class="sidebar-link scroll-link">Technical Track</a></li>
+                <li><a href="#contact-us" class="sidebar-link scroll-link">Contact Us</a></li>
             </ul>
         </aside>
 
         <!-- Main Content -->
-        <main class="main-content" id="content-container">
-            <!-- Sections will be loaded dynamically here -->
+        <main class="main-content">
+            <!-- About Section -->
+            <section id="about" class="content-section active">
+                <!-- Mobile logos row -->
+                <div class="mobile-logos">
+                    <img src="./assets/images/logo.png" alt="Conference Logo">
+                    <img src="./assets/images/springer.jpg" alt="Springer Logo">
+                </div>
+
+                <!-- Hero Section -->
+                <div class="hero-section">
+                    <img src="./assets/images/mnnit.jpg" alt="Conference Slideshow" class="hero-image">
+                    <div class="hero-overlay"></div>
+                    
+                    <!-- Desktop logos -->
+                    <div class="hero-logos">
+                        <img src="./assets/images/logo.png" alt="Conference Logo" class="hero-logo-left">
+                        <img src="./assets/images/springer.jpg" alt="Springer Logo" class="hero-logo-right">
+                    </div>
+
+                    <!-- Hero text -->
+                    <div class="hero-text">
+                        <h1>9th Student's Conference on Engineering and Systems (SCES-2026)</h1>
+                        <p class="hero-theme">Theme: <span>Empowering Sustainable Energy and Technology Solutions</span></p>
+                        <p class="hero-date">May 15th – 17th, 2026</p>
+                        <p class="hero-org">Organised by Department of Electrical Engineering</p>
+                        <p class="hero-inst">Motilal Nehru National Institute of Technology</p>
+                        <p class="hero-importance">An Institute of National Importance as Declared by NIT ACT, GOI, 2007</p>
+                    </div>
+                </div>
+
+                <!-- Important Dates -->
+                <div class="dates-section">
+                    <h2 class="section-heading">Important Dates <span class="tentative">[Tentative]</span></h2>
+                    <div class="dates-card">
+                        <table class="dates-table">
+                            <tbody>
+                                <tr>
+                                    <td class="date-label">Submission opens:</td>
+                                    <td>November 15, 2025</td>
+                                </tr>
+                                <tr>
+                                    <td class="date-label">Submission deadline:</td>
+                                    <td>January 31, 2026</td>
+                                </tr>
+                                <tr>
+                                    <td class="date-label">Acceptance notification:</td>
+                                    <td>March 31, 2026</td>
+                                </tr>
+                                <tr>
+                                    <td class="date-label">Camera ready paper deadline:</td>
+                                    <td>April 15, 2026</td>
+                                </tr>
+                                <tr>
+                                    <td class="date-label">Early bird registration:</td>
+                                    <td>April 25, 2026</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- About Conference -->
+                <div class="about-content">
+                    <h2 class="section-heading">About the Conference</h2>
+                    <p>The Department of Electrical Engineering, Motilal Nehru National Institute of Technology Allahabad has successfully organized eight successive students' conferences titled: "Students' Conference on Engineering and Systems (SCES 2012, SCES-2013, SCES-2014, SCES-2015, SCES-2019, SCES 2020, SCES-2022 & SCES-2024)", which were technically sponsored by the IEEE Uttar Pradesh Section and co-sponsored by the IEEE Joint Society Chapter of IE/PEL/CS (Industrial Electronics/ Power Electronics/ Control System). Department is organizing the ninth sequel conference of SCES to motivate student scholars working in the area of Engineering and Systems. The conference will focus on the emerging areas in the field of Power, Energy & Control, Electronics, Communication & Signal Processing, Computational Intelligence & Machine Learning, Mechanical Systems and Mechatronics, Applied Sciences, etc. The aim of the conference is to provide a platform for research students to present original work done by them which leads to sharing of knowledge at a highly technical platform. The student researchers and academicians from various reputed institutes will be invited for presentations, deliberations, and discussions. It is proposed to have a 3-day program during May 15th – 17th, 2026. The technical program will comprise of keynote and tutorial sessions delivered by academic and industry experts of repute, and involve students' research work through oral presentations and technical exhibitions, etc.</p>
+
+                    <h2 class="section-heading">About Electrical Engineering Department</h2>
+                    <p>The Electrical Engineering Department (EED) came into existence in the year 1961, with the objective to produce technical man power of high quality and promote research and development activity. With a modest beginning of introducing four year BE degree course in 1961, a post graduate programme in Electrical Machine / Power System / Control System was introduced in the year 1970-71. Currently, EED offers courses leading to a Bachelor of Technology in Electrical Engineering, Post Graduate and Ph.D programs in (i) Power Electronics and Drives (ii) Control & Instrumentation and (iii) Power System. The department has qualified and experienced faculty in all the related fields of Electrical Engineering viz. Electrical Power System, Electrical Machines, Control & Instrumentation and Power Electronics. The vision of the Department is to produce globally competitive technical manpower with sound knowledge of theory and practice, with a commitment to serve the society and to foster cutting edge research in Electrical Engineering pertaining to the problems currently faced by the country and the world.</p>
+
+                    <h2 class="section-heading">Sponsorship Opportunities</h2>
+                    <div class="table-container">
+                        <table class="sponsorship-table">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Sponsorship Fee (INR)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Platinum</td>
+                                    <td>1,00,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Diamond</td>
+                                    <td>50,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Gold</td>
+                                    <td>25,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Silver</td>
+                                    <td>15,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2 class="section-heading">Our Sponsors</h2>
+                    <div class="coming-soon">
+                        <h1>Coming Soon</h1>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Keynote Speakers Section -->
+            <section id="keynote-speakers" class="content-section simple-section">
+                <h2 class="section-heading">Keynote Speakers</h2>
+                <p>Details coming soon.</p>
+            </section>
+
+            <!-- Tutorial Speakers Section -->
+            <section id="tutorial-speakers" class="content-section simple-section">
+                <h2 class="section-heading">Tutorial Speakers</h2>
+                <p>Details coming soon.</p>
+            </section>
+
+            <!-- Track Chair Section -->
+            <section id="track-chair" class="content-section simple-section">
+                <h2 class="section-heading">Track Chair</h2>
+                <p>Details coming soon.</p>
+            </section>
+
+            <!-- Special Session Section -->
+            <section id="special-session" class="content-section simple-section">
+                <h2 class="section-heading">Special Session</h2>
+                <p>Details coming soon.</p>
+            </section>
+
+            <!-- Important Dates Section -->
+            <section id="important-dates" class="content-section important-dates-section">
+                <h2 class="section-heading">Important Dates <span class="tentative">[Tentative]</span></h2>
+                <div class="dates-card">
+                    <table class="dates-table">
+                        <tbody>
+                            <tr>
+                                <td class="date-label">Submission opens:</td>
+                                <td>November 15, 2025</td>
+                            </tr>
+                            <tr>
+                                <td class="date-label">Submission deadline:</td>
+                                <td>January 31, 2026</td>
+                            </tr>
+                            <tr>
+                                <td class="date-label">Acceptance notification:</td>
+                                <td>March 31, 2026</td>
+                            </tr>
+                            <tr>
+                                <td class="date-label">Camera ready paper deadline:</td>
+                                <td>April 15, 2026</td>
+                            </tr>
+                            <tr>
+                                <td class="date-label">Early bird registration:</td>
+                                <td>April 25, 2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Call for Paper Section -->
+            <!-- <section id="call-for-paper" class="content-section simple-section">
+                <h2 class="section-heading">Call for Paper</h2>
+                <p>Details coming soon.</p>
+            </section> -->
+
+            <!-- Guidelines Section -->
+            <section id="guidelines" class="content-section guidelines-section">
+                <h2 class="section-heading">Guidelines for Paper Submission</h2>
+                <ol>
+                    <li>At least one author of each submitted paper must be a student.</li>
+                    <li>Prospective authors are invited to submit original and unpublished papers in the conference.</li>
+                    <li>Paper(s) should be submitted in specified paper template available on website.</li>
+                    <li>As per the conference norms, the papers submitted will undergo a peer review process for acceptance. The papers will be reviewed by the technical experts.</li>
+                    <li>The conference will have oral sessions.</li>
+                    <li>High quality original papers as per the standards of the conference will be accepted under oral session.</li>
+                    <li>Technical program committee of the conference will decide the inclusion of paper in the conference proceedings.</li>
+                    <li>All the papers should be submitted through on-line paper submission process. Refer paper submission link on website for paper submission.</li>
+                    <li>All the papers will be checked for plagiarism and papers that violate the conference publication principles will be summarily rejected.</li>
+                </ol>
+                <h4>Best Paper Awards:</h4>
+                <p>A Best Paper Award will be given in each technical track.</p>
+                <p>For more information and updates please visit conference website <a href="https://www.mnnit.ac.in/sces2026" target="_blank" rel="noopener noreferrer">www.mnnit.ac.in/sces2026</a></p>
+            </section>
+
+            <!-- Camera Ready Section -->
+            <section id="camera-ready" class="content-section simple-section">
+                <h2 class="section-heading">Camera Ready Paper Submission</h2>
+                <p>Details coming soon.</p>
+            </section>
+
+            <!-- Technical Track Section -->
+            <section id="technical-track" class="content-section technical-track-section">
+                <h2 class="section-heading">Technical Tracks & Topics</h2>
+                <p>Following are the technical tracks and topics for the technical papers to be submitted in the conference.</p>
+                <div class="tracks-container">
+                    <div class="track-item">
+                        <h3>Power, Energy & Control</h3>
+                        <p>Control Systems, Instrumentation & Measurement, Dielectrics & Electrical Insulation, EHV AC & HVDC Transmission, Electric Vehicle/ Mobility, Energy storage & Battery Charging Techniques, Industrial Drives & Applications, Intelligent Transportation Systems, Power Electronic Converters, Power Quality & EMI, Power System Operation & Control, Power System Protection, Regulation & Electricity Market, Robotics & Automation, Smart Grid & Micro Grid Technologies, etc.</p>
+                    </div>
+                    <div class="track-item">
+                        <h3>Electronics, Communication & Signal Processing</h3>
+                        <p>Antennas & Propagation, Circuits & Systems, Communication, Consumer Electronics, & Electromagnetics, Electron Devices & Solid-State Circuits, Micro & Nano-electronics, Photonic Technology & Applications, Optical Communication, RF, Microwave, & Millimetre Wave Techniques, Ultrasonic, Ferroelectrics, Sensors & Sensing Systems, Signal, Image & Video Processing, VLSI design, Wireless Technologies, etc.</p>
+                    </div>
+                    <div class="track-item">
+                        <h3>Computational Intelligence & Machine Learning</h3>
+                        <p>Artificial & Augmented Intelligence and their applications, Big Data Analysis, Biometrics & RFID, Computational Intelligence, Computer Networks, Computer Vision, Image & Video Processing, Internet of Things, Machine learning, Wireless Networks & Security, 5G Networks & Cloud Computing, etc.</p>
+                    </div>
+                    <div class="track-item">
+                        <h3>Mechanical Systems and Mechatronics</h3>
+                        <p>Aerospace Engineering, Computational Fluid Dynamics, Composite Materials, Heat & Mass Transfer, Manufacturing Technology, Mechatronics, MEMS, Refrigeration & Cryogenics, Smart Materials & Mechanics, Solid Mechanics, etc.</p>
+                    </div>
+                    <div class="track-item">
+                        <h3>Applied Sciences</h3>
+                        <p>Applied Superconductivity, Bioinformatics, Biomedical Engineering, Computational Biology, Healthcare & Agriculture etc., Engineering in Medicine & Biology, Geo-informatics and Transportation Engineering, Geoscience & Remote Sensing, Nano-biotechnology & Applications, Nuclear Science, Pervasive Computing, Social & Humanitarian Implications of Technology, Statistical Methods, Stability Theory, etc.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Us Section -->
+            <section id="contact-us" class="content-section contact-section">
+                <h2 class="section-heading">Contact Us</h2>
+                <div class="contacts-container">
+                    <div class="contact-card">
+                        <h3>Faculty Contacts</h3>
+                        <ul>
+                            <li><span class="contact-name">Dr. Niraj K. Choudhary</span>, <span class="contact-phone">+91-9455691568</span></li>
+                            <li><span class="contact-name">Dr. Vishal Kumar Gaur</span>, <span class="contact-phone">+91-7253046186</span></li>
+                            <li><span class="contact-name">Dr. Arvind K. Prajapati</span>, <span class="contact-phone">+91-7607276799</span></li>
+                        </ul>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Email</h3>
+                        <ul>
+                            <li>sces.mnnit@gmail.com</li>
+                            <li>niraj@mnnit.ac.in</li>
+                            <li>vkgaur@mnnit.ac.in</li>
+                            <li>arvindkp@mnnit.ac.in</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
-    <script src="assets/js/main.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 SCES MNNIT. All rights reserved.</p>
+        <p>Web Team: <a href="web-team.html" target="_blank" rel="noopener noreferrer">Meet the Web Team</a></p>
+    </footer>
+
+    <script src="./assets/js/main-static.js"></script>
 </body>
 </html>
