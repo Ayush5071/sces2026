@@ -324,14 +324,16 @@ img.nav-logo,
 }
 
 .nav-btn {
-    padding: 0.75rem 1.5rem;
+    padding: 0.45rem 1.1rem;   /* ↓ smaller button */
     background: var(--gradient-purple);
     color: var(--white) !important;
     font-weight: 600;
-    border-radius: var(--radius-full);
+    font-size: 0.85rem;        /* ↓ smaller text */
+    border-radius: 999px;      /* still pill-shaped */
     box-shadow: var(--shadow-purple);
     transition: var(--transition-base);
 }
+
 
 .nav-btn:hover {
     transform: translateY(-2px);
