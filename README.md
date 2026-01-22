@@ -97,6 +97,7 @@ To add more pages (Registration, Committee pages, etc.):
 
 - All images are loaded from `assets/images/` directory
 - CSS uses modern flexbox and grid layouts
+deploy
 - JavaScript uses vanilla ES6+ (no frameworks required)
 - No build process needed - just open and run!
 
