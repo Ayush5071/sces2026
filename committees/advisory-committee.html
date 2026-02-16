@@ -5,10 +5,301 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advisory Committee - SCES-2027</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/committee-table.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        /* Navbar styles - Default minimal styling */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            margin-bottom: 40px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .nav-logo img {
+            height: 45px;
+        }
+
+        .logo-text {
+            color: #333;
+        }
+
+        .logo-year {
+            color: #666;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            color: #667eea;
+        }
+
+        .nav-btn {
+            background: #667eea;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-btn:hover {
+            background: #5568d3;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            min-width: 220px;
+            padding: 10px 0;
+            margin-top: 10px;
+            list-style: none;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-menu li a:hover {
+            background: #f5f5f5;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        /* Committee page styles */
+        .committee-page {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .committee-section {
+            margin-bottom: 60px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: transparent;
+            border-radius: 0;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: none;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-image-wrapper {
+            width: 128px;
+            height: 128px;
+            margin: 0 auto 20px;
+            position: relative;
+            cursor: pointer;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (min-width: 640px) {
+            .profile-image-wrapper {
+                width: 144px;
+                height: 144px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .profile-image-wrapper {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .profile-image-wrapper {
+                width: 176px;
+                height: 176px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .profile-image-wrapper {
+                width: 192px;
+                height: 192px;
+            }
+        }
+
+        .profile-image-wrapper:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 5px;
+            line-height: 1.3;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-designation {
+            font-size: 0.9rem;
+            color: #f0f0f0;
+            font-weight: 500;
+            margin-bottom: 3px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-affiliation {
+            font-size: 0.85rem;
+            color: #e8e8e8;
+            font-weight: 400;
+            line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-   <nav class="navbar" id="navbar">
+    <!-- Top Navbar -->
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="../index.html" class="nav-logo">
                 <img src="../assets/images/logo.png" alt="SCES Logo">
@@ -16,58 +307,50 @@
             </a>
 
             <ul class="nav-menu" id="navMenu">
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="../index.html#about" class="nav-link">About</a></li>
-            <li><a href="../registration.html" class="nav-link">Registration</a></li>
-                <li><a href="./tutist-places.html" class="nav-link">Tourist Places</a></li>
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../registration.html" class="nav-link">Registration</a></li>
+                <li><a href="./tourist-places.html" class="nav-link">Tourist Places</a></li>
 
-                <!-- <li><a href="#dates" class="nav-link">call-for-paper</a></li> -->
                 <li class="nav-dropdown">
                     <a href="#" class="nav-link dropdown-toggle">
                         Submission Details
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6" />
                         </svg>
                     </a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="../sections/call-for-paper.html">Call for Paper</a>
-                        </li>
-                        <li>
-                            <a href="../sections/paper-submition-guidline.html"> Guideline for paper submission </a>
-                        </li>
-                        <li>
-                            <a href="../sections/camera-ready.html">Submit Camera Ready Paper</a>
-                        </li>
+                        <li><a href="../sections/call-for-paper.html">Call for Paper</a></li>
+                        <li><a href="../sections/paper-submition-guidline.html">Guideline for paper submission</a></li>
+                        <li><a href="../sections/camera-ready.html">Submit Camera Ready Paper</a></li>
                     </ul>
                 </li>
                 <li class="nav-dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">Committees <svg width="12" height="12"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <a href="#" class="nav-link dropdown-toggle">
+                        Committees
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6" />
-                        </svg></a>
+                        </svg>
+                    </a>
                     <ul class="dropdown-menu">
                         <li><a href="./conference-committee.html">Conference Committee</a></li>
                         <li><a href="#">Advisory Committee</a></li>
-                        <li><a href="./technical-program-committee.html">Technical Program Committee</a>
-                        </li>
+                        <li><a href="./technical-program-committee.html">Technical Program Committee</a></li>
                         <li><a href="./student-committee.html">Student Committee</a></li>
                     </ul>
                 </li>
                 <li class="nav-dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">Archives <svg width="12" height="12"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <a href="#" class="nav-link dropdown-toggle">
+                        Archives
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6" />
-                        </svg></a>
+                        </svg>
+                    </a>
                     <ul class="dropdown-menu">
-                        <li><a href="https://mnnit.ac.in/sces2024/Special_Session.html" target="_blank">SCES 2024</a>
-                        </li>
+                        <li><a href="https://mnnit.ac.in/sces2024/Special_Session.html" target="_blank">SCES 2024</a></li>
                         <li><a href="https://www.mnnit.ac.in/sces2022/" target="_blank">SCES 2022</a></li>
-                        <li><a href="https://mnnit.ac.in/sces2024/sces2020/index.html" target="_blank">SCES 2020</a>
-                        </li>
-                        <li><a href="https://mnnit.ac.in/sces2024/sces2019/index.html" target="_blank">SCES 2019</a>
-                        </li>
+                        <li><a href="https://mnnit.ac.in/sces2024/sces2020/index.html" target="_blank">SCES 2020</a></li>
+                        <li><a href="https://mnnit.ac.in/sces2024/sces2019/index.html" target="_blank">SCES 2019</a></li>
                     </ul>
                 </li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -82,32 +365,128 @@
         </div>
     </nav>
 
-    <div class="committee-table-page">
+    <div class="committee-page">
         <h1 class="page-title">Advisory Committee (Tentative)</h1>
-        <div class="table-content">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Affiliation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Prof. Victor Sreeram</td><td>University of Western Australia, Australia</td></tr>
-                    <tr><td>Prof. Xiao-Zhi Gao</td><td>University of Eastern Finland, Finland</td></tr>
-                    <tr><td>Prof. Bhim Singh</td><td>IIT Delhi</td></tr>
-                    <tr><td>Prof. Nirmal C. Nair</td><td>University of Auckland, New Zealand</td></tr>
-                    <tr><td>Prof. S. Kamalasadan</td><td>University of North Carolina, USA</td></tr>
-                    <tr><td>Prof. Hatim Zein El Din</td><td>Khalifa University</td></tr>
-                    <tr><td>Prof. Sri Niwas Singh</td><td>IIT Kanpur</td></tr>
-                    <tr><td>Prof. Bhaveshkumar R. Bhalja</td><td>IIT Roorkee</td></tr>
-                    <tr><td>Prof. Yogesh Vijay Hote</td><td>IIT Roorkee</td></tr>
-                    <tr><td>Prof. B. K. Roy</td><td>NIT Silchar</td></tr>
-                    <tr><td>Prof. Saikat Chakrabarti</td><td>IIT Kanpur</td></tr>
-                    <tr><td>Prof. Sukumar Mishra</td><td>IIT Delhi</td></tr>
-                    <tr><td>Prof. Vinod Khadkikar</td><td>Khalifa University, UAE</td></tr>
-                </tbody>
-            </table>
+
+        <div class="committee-section">
+            <div class="cards-container">
+                <!-- Prof. Victor Sreeram -->
+                <div class="profile-card">
+                    <a href="https://research-repository.uwa.edu.au/en/persons/victor-sreeram" target="_blank" class="profile-image-wrapper">
+                        <img src="https://research-repository.uwa.edu.au/files-asset/31782093/VictorSreeram_img?w=320&f=webp" alt="Prof. Victor Sreeram" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Victor Sreeram</h3>
+                    <p class="profile-affiliation">University of Western Australia, Australia</p>
+                </div>
+
+                <!-- Prof. Xiao-Zhi Gao -->
+                <div class="profile-card">
+                    <a href="https://uefconnect.uef.fi/en/xiaozhi.gao" target="_blank" class="profile-image-wrapper">
+                        <img src="https://uefconnect.uef.fi/wp-content/uploads/2021/02/90341a81310dde86c67fbe6af4835a6d_profile_file.jpg" alt="Prof. Xiao-Zhi Gao" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Xiao-Zhi Gao</h3>
+                    <p class="profile-affiliation">University of Eastern Finland, Finland</p>
+                </div>
+
+                <!-- Prof. Bhim Singh -->
+                <div class="profile-card">
+                    <a href="https://web.iitd.ac.in/~bsingh" target="_blank" class="profile-image-wrapper">
+                        <img src="https://ee.iitd.ac.in/public/storage/faculty_images/faculty_90rdtVACWb.jpg" alt="Prof. Bhim Singh" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Bhim Singh</h3>
+                    <p class="profile-affiliation">IIT Delhi</p>
+                </div>
+
+                <!-- Prof. Nirmal C. Nair -->
+                <div class="profile-card">
+                    <a href="https://profiles.auckland.ac.nz/n-nair" target="_blank" class="profile-image-wrapper">
+                        <img src="https://profiles.auckland.ac.nz/n-nair/thumbnail" alt="Prof. Nirmal C. Nair" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Nirmal C. Nair</h3>
+                    <p class="profile-affiliation">University of Auckland, New Zealand</p>
+                </div>
+
+                <!-- Prof. S. Kamalasadan -->
+                <div class="profile-card">
+                    <a href="https://peisl.charlotte.edu/dr-sukumar-kamalasadan" target="_blank" class="profile-image-wrapper">
+                        <img src="https://peisl.charlotte.edu/wp-content/uploads/sites/549/2023/07/kamalasadan_sukumar_3-3-300x450.jpg" alt="Prof. S. Kamalasadan" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. S. Kamalasadan</h3>
+                    <p class="profile-affiliation">University of North Carolina, USA</p>
+                </div>
+
+                <!-- Prof. Hatim Zein El Din -->
+                <div class="profile-card">
+                    <a href="https://www.ku.ac.ae/college-people/hatem-zein-el-din" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.ku.ac.ae/wp-content/themes/khalifauniversity/faculty-uploads/Hatem_Zeineldin.jpg" alt="Prof. Hatim Zein El Din" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Hatim Zein El Din</h3>
+                    <p class="profile-affiliation">Khalifa University, UAE</p>
+                </div>
+
+                <!-- Prof. Sri Niwas Singh -->
+                <div class="profile-card">
+                    <a href="https://www.iitk.ac.in/dora/profile/Prof-Sri-Niwas-Singh" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.iitk.ac.in/dora/imag/profile/SN-EEA.JPG" alt="Prof. Sri Niwas Singh" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Sri Niwas Singh</h3>
+                    <p class="profile-affiliation">IIT Kanpur</p>
+                </div>
+
+                <!-- Prof. Bhaveshkumar R. Bhalja -->
+                <div class="profile-card">
+                    <a href="https://iitr.ac.in/Departments/Electrical%20Engineering%20Department/People/Faculty/Bhavesh%20Kumar%20R.Bhalja.html" target="_blank" class="profile-image-wrapper">
+                        <img src="https://channeli.in/media/kernel/display_pictures/d039dd6e-7214-4d4a-b583-e24248e3eee0.jpg" alt="Prof. Bhaveshkumar R. Bhalja" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Bhaveshkumar R. Bhalja</h3>
+                    <p class="profile-affiliation">IIT Roorkee</p>
+                </div>
+
+                <!-- Prof. Yogesh Vijay Hote -->
+                <div class="profile-card">
+                    <a href="https://iitr.ac.in/Departments/Electrical%20Engineering%20Department/People/Faculty/100560.html" target="_blank" class="profile-image-wrapper">
+                        <img src="https://channeli.in/media/kernel/display_pictures/9730a495-5d27-47d6-b99f-a26692b86453" alt="Prof. Yogesh Vijay Hote" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Yogesh Vijay Hote</h3>
+                    <p class="profile-affiliation">IIT Roorkee</p>
+                </div>
+
+                <!-- Prof. B. K. Roy -->
+                <div class="profile-card">
+                    <a href="https://eed.nits.ac.in/faculties/binoy-krishna-roy" target="_blank" class="profile-image-wrapper">
+                        <img src="https://eed.nits.ac.in/storage/FacultyDetails/IMG_17533389736881d45d19096.jpg" alt="Prof. B. K. Roy" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. B. K. Roy</h3>
+                    <p class="profile-affiliation">NIT Silchar</p>
+                </div>
+
+                <!-- Prof. Saikat Chakrabarti -->
+                <div class="profile-card">
+                    <a href="https://www.iitk.ac.in/saikat-chakrabarti" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.iitk.ac.in/data/media/faculty/Saikat-Chakrabarti.jpg" alt="Prof. Saikat Chakrabarti" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Saikat Chakrabarti</h3>
+                    <p class="profile-affiliation">IIT Kanpur</p>
+                </div>
+
+                <!-- Prof. Sukumar Mishra -->
+                <div class="profile-card">
+                    <a href="https://web.iitd.ac.in/~sukumar" target="_blank" class="profile-image-wrapper">
+                        <img src="https://web.iitd.ac.in/~sukumar/pics/1.jpg" alt="Prof. Sukumar Mishra" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Sukumar Mishra</h3>
+                    <p class="profile-affiliation">IIT Delhi</p>
+                </div>
+
+                <!-- Prof. Vinod Khadkikar -->
+                <div class="profile-card">
+                    <a href="https://www.ku.ac.ae/college-people/vinod-khadkikar" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.ku.ac.ae/wp-content/themes/khalifauniversity/faculty-uploads/Vinod_KU.jpg" alt="Prof. Vinod Khadkikar" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Vinod Khadkikar</h3>
+                    <p class="profile-affiliation">Khalifa University, UAE</p>
+                </div>
+            </div>
         </div>
     </div>
 
