@@ -5,11 +5,313 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conference Committee - SCES-2027</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/committee.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Navbar styles - Default minimal styling */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            margin-bottom: 40px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .nav-logo img {
+            height: 45px;
+        }
+
+        .logo-text {
+            color: #333;
+        }
+
+        .logo-year {
+            color: #666;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            color: #667eea;
+        }
+
+        .nav-btn {
+            background: #667eea;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-btn:hover {
+            background: #5568d3;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            min-width: 220px;
+            padding: 10px 0;
+            margin-top: 10px;
+            list-style: none;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-menu li a:hover {
+            background: #f5f5f5;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        /* Committee page styles */
+        .committee-page {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .committee-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 20px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-image-wrapper {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 25px;
+            position: relative;
+            cursor: pointer;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .profile-image-wrapper:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .profile-image-wrapper::before {
+            display: none;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: none;
+            position: relative;
+            z-index: 1;
+            display: block;
+        }
+
+        .profile-image-wrapper:hover .profile-image {
+            transform: none;
+        }
+
+        .profile-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .profile-designation {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .profile-affiliation {
+            font-size: 0.95rem;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .single-card {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .text-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .text-section p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Top Navbar (Same as registration.html) -->
-     <nav class="navbar" id="navbar">
+    <!-- Top Navbar -->
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="../index.html" class="nav-logo">
                 <img src="../assets/images/logo.png" alt="SCES Logo">
@@ -49,8 +351,8 @@
                             <path d="M6 9l6 6 6-6" />
                         </svg></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Conference Committee</a></li>
-                        <li><a href="./advisory-committee.html">Advisory Committee</a></li>
+                        <li><a href="./conference-committee.html">Conference Committee</a></li>
+                        <li><a href="#">Advisory Committee</a></li>
                         <li><a href="./technical-program-committee.html">Technical Program Committee</a>
                         </li>
                         <li><a href="./student-committee.html">Student Committee</a></li>
@@ -85,59 +387,336 @@
 
     <div class="committee-page">
         <h1 class="page-title">Conference Committee (Tentative)</h1>
-        <div class="committee-content">
-            <div class="committee-section">
-                <h2>Patron</h2>
-                <p>Prof. Rama Shanker Verma<br>Director, MNNIT Allahabad</p>
+
+        <!-- Patron Section -->
+        <div class="committee-section">
+            <h2 class="section-title">Patron</h2>
+            <div class="cards-container single-card">
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/director" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/dir_img_250423.jpg" alt="Prof. Rama Shanker Verma" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Rama Shanker Verma</h3>
+                    <p class="profile-designation">Director</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
             </div>
-            <!-- <div class="committee-section">
-                <h2>Honorary General Chair(s)</h2>
-                <p>Prof. N. P. Padhy, Director, MNIT Jaipur<br>Prof. Anupam Shukla, Director, SVNIT Surat<br>Prof. H. M. Suryawanshi, Director, NIT Hamirpur
-                    <br>Prof. Ajay Sharma, Director, NIT Delhi</p>
-            </div> -->
-            <div class="committee-section">
-                <h2>General Chair(s)</h2>
-                <p>Prof. Nitin Singh, Head, EED<br>Prof. Mayank Pandey, Head, CSED<br>Prof. Arun Prakash, ECED <br>Prof. Y. K. Prajapati, ECED<br>Dr. Deepak Kumar, EED</p>
+        </div>
+
+        <!-- General Chairs Section -->
+        <div class="committee-section">
+            <h2 class="section-title">General Chair(s)</h2>
+            <div class="cards-container">
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/nitins" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/NItin.jpg" alt="Prof. Nitin Singh" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Nitin Singh</h3>
+                    <p class="profile-designation">Head, EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/mayankpandey" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/mayank.jpg" alt="Prof. Mayank Pandey" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Mayank Pandey</h3>
+                    <p class="profile-designation">Head, CSED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/index.php/department/engineering/ee/eefp" target="_blank" class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/180/667eea/ffffff?text=AP" alt="Prof. Arun Prakash" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Arun Prakash</h3>
+                    <p class="profile-designation">ECED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/index.php/department/engineering/ee/eefp" target="_blank" class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/180/667eea/ffffff?text=YKP" alt="Prof. Y. K. Prajapati" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Y. K. Prajapati</h3>
+                    <p class="profile-designation">ECED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/deepak_kumar" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/001deepak.jpg" alt="Dr. Deepak Kumar" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Deepak Kumar</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
             </div>
-            <div class="committee-section">
-                <h2>Steering Committee Chair(s)</h2>
-                <p>Prof. R. K. Singh, EED<br>Prof. R. K. Tripathi, EED<br>Prof. Shubhi Purwar, EED<br>Prof. Paulson Samuel, EED<br>Prof. Asheesh K. Singh, EED<br>Prof. Rajesh Gupta, EED<br>Prof. Richa Negi, EED</p>
+        </div>
+
+        <!-- Steering Committee Chairs Section -->
+        <div class="committee-section">
+            <h2 class="section-title">Steering Committee Chair(s)</h2>
+            <div class="cards-container">
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/rksingh" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/RKS.jpg" alt="Prof. R. K. Singh" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. R. K. Singh</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/rktripathi" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/RKT.jpg" alt="Prof. R. K. Tripathi" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. R. K. Tripathi</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/shubhi" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/Shubhi%20Purwar.jpg" alt="Prof. Shubhi Purwar" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Shubhi Purwar</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/paul" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/Paulson.jpg" alt="Prof. Paulson Samuel" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Paulson Samuel</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/asheesh" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/ak%20singh.jpg" alt="Prof. Asheesh K. Singh" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Asheesh K. Singh</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/rajeshgupta" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/R%20gupta.jpg" alt="Prof. Rajesh Gupta" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Rajesh Gupta</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/richa" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/R%20negi.jpg" alt="Prof. Richa Negi" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Prof. Richa Negi</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
             </div>
-            <div class="committee-section">
-                <h2>Conference Chair(s)</h2>
-                <p>Dr. Vishal K. Gaur, EED<br>Dr. Arvind K. Prajapati, EED</p>
+        </div>
+
+        <!-- Conference Chairs Section -->
+        <div class="committee-section">
+            <h2 class="section-title">Conference Chair(s)</h2>
+            <div class="cards-container">
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/vkgaur" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/Vishal%20Kumar%20Gaur.jpg" alt="Dr. Vishal K. Gaur" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Vishal K. Gaur</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/arvindk" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/pra.jpg" alt="Dr. Arvind K. Prajapati" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Arvind K. Prajapati</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
             </div>
-            <div class="committee-section">
-                <h2>Organizing Chair(s)</h2>
-                <p>Dr. Niraj Kumar Choudhary, EED<br>Dr. Navneet Kumar Singh, EED</p>
+        </div>
+
+        <!-- Organizing Chairs Section -->
+        <div class="committee-section">
+            <h2 class="section-title">Organizing Chair(s)</h2>
+            <div class="cards-container">
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/niraj" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/neeraj%20k%20chaudhary.jpg" alt="Dr. Niraj Kumar Choudhary" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Niraj Kumar Choudhary</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/navneet" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/navneet.jpg" alt="Dr. Navneet Kumar Singh" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Navneet Kumar Singh</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
             </div>
-            <div class="committee-section">
-                <h2>Organizing Secretary(s)</h2>
-                <p>Dr. Satnesh Singh, EED<br>Dr. Shubh Lakshmi, EED</p>
+        </div>
+
+        <!-- Organizing Secretaries Section -->
+        <div class="committee-section">
+            <h2 class="section-title">Organizing Secretary(s)</h2>
+            <div class="cards-container">
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/satnesh" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/SATNESH.jpg" alt="Dr. Satnesh Singh" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Satnesh Singh</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/slakshmi" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/Dr.%20Shubh%20lakshi.jpg" alt="Dr. Shubh Lakshmi" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Shubh Lakshmi</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
             </div>
-            <div class="committee-section">
-                <h2>Technical Program Chair(s)</h2>
-                <p>Dr. Prashant K. Tiwari, EED<br>Dr. Ranvijay, CSED<br>Dr. Jagat Jyoti Rath, EED</p>
+        </div>
+
+        <!-- Technical Program Chairs Section -->
+        <div class="committee-section">
+            <h2 class="section-title">Technical Program Chair(s)</h2>
+            <div class="cards-container">
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/prashanttiwari" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/1568906996011%20Photo%20Dr.%20Prashant%20Kumar%20Tiwari.jpg" alt="Dr. Prashant K. Tiwari" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Prashant K. Tiwari</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/ranvijay" target="_blank" class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/180/667eea/ffffff?text=Ranvijay" alt="Dr. Ranvijay" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Ranvijay</h3>
+                    <p class="profile-designation">CSED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/jagat" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/Jagat.jpg" alt="Dr. Jagat Jyoti Rath" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Jagat Jyoti Rath</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
             </div>
-            <div class="committee-section">
-                <h2>Publication Chair(s)</h2>
-                <p>Dr. Souradip De, EED<br>Dr. Kapil Chauhan, EED<br>  Dr. Dheeraj Ahuja, ChED </p>
+        </div>
+
+        <!-- Publication Chairs Section -->
+        <div class="committee-section">
+            <h2 class="section-title">Publication Chair(s)</h2>
+            <div class="cards-container">
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/souradipde" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/Dr.%20Souradip.jpg" alt="Dr. Souradip De" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Souradip De</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/kapilchauhan" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/kapilchauhan.jpg" alt="Dr. Kapil Chauhan" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Kapil Chauhan</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/index.php/department/engineering/ee/eefp" target="_blank" class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/180/667eea/ffffff?text=DA" alt="Dr. Dheeraj Ahuja" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Dheeraj Ahuja</h3>
+                    <p class="profile-designation">ChED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
             </div>
-            <div class="committee-section">
-                <h2>Tutorial & Technical Workshop Chair</h2>
-                <p>Dr. Bhamidi Lokeshgupta, EED</p>
+        </div>
+
+        <!-- Tutorial & Technical Workshop Chair Section -->
+        <div class="committee-section">
+            <h2 class="section-title">Tutorial & Technical Workshop Chair</h2>
+            <div class="cards-container single-card">
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/b.lokeshgupta" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/Bhamindi.jpg" alt="Dr. Bhamidi Lokeshgupta" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Bhamidi Lokeshgupta</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
             </div>
-            <div class="committee-section">
-                <h2>Finance Chair(s)</h2>
-                <p>Dr. Saumendra Sarangi, EED</p>
+        </div>
+
+        <!-- Finance Chair Section -->
+        <div class="committee-section">
+            <h2 class="section-title">Finance Chair(s)</h2>
+            <div class="cards-container single-card">
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/saumendras" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/SAUMENDRA%20SARANGI.jpg" alt="Dr. Saumendra Sarangi" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Saumendra Sarangi</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
             </div>
-            <div class="committee-section">
-                <h2>Web Designing & Publicity Chair(s)</h2>
-                <p>Dr. Sarsij Tripathi, CSED<br>Dr. Dogga Raveendhra, EED</p>
+        </div>
+
+        <!-- Web Designing & Publicity Chairs Section -->
+        <div class="committee-section">
+            <h2 class="section-title">Web Designing & Publicity Chair(s)</h2>
+            <div class="cards-container">
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/sarsij" target="_blank" class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/180/667eea/ffffff?text=ST" alt="Dr. Sarsij Tripathi" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Sarsij Tripathi</h3>
+                    <p class="profile-designation">CSED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/doggar" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/Dr.%20Dogga%20Raveendra.jpg" alt="Dr. Dogga Raveendhra" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Dogga Raveendhra</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
             </div>
-            <div class="committee-section">
-                <h2>Hospitality Chair</h2>
-                <p>Dr. M. Venkatesh Naik, EED<br>Dr. Dipayan Guha, EED</p>
+        </div>
+
+        <!-- Hospitality Chair Section -->
+        <div class="committee-section">
+            <h2 class="section-title">Hospitality Chair</h2>
+            <div class="cards-container">
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/index.php/department/engineering/ee/eefp" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/vinayak.jpg" alt="Dr. M. Venkatesh Naik" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. M. Venkatesh Naik</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+                <div class="profile-card">
+                    <a href="https://www.mnnit.ac.in/profile/dipayan" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/images/guha%20pic.jpg" alt="Dr. Dipayan Guha" class="profile-image">
+                    </a>
+                    <h3 class="profile-name">Dr. Dipayan Guha</h3>
+                    <p class="profile-designation">EED</p>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
             </div>
         </div>
     </div>

@@ -5,10 +5,261 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technical Program Committee - SCES-2027</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/committee-table.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        /* Navbar styles - Default minimal styling */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            margin-bottom: 40px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .nav-logo img {
+            height: 45px;
+        }
+
+        .logo-text {
+            color: #333;
+        }
+
+        .logo-year {
+            color: #666;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            color: #667eea;
+        }
+
+        .nav-btn {
+            background: #667eea;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-btn:hover {
+            background: #5568d3;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            min-width: 220px;
+            padding: 10px 0;
+            margin-top: 10px;
+            list-style: none;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-menu li a:hover {
+            background: #f5f5f5;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        /* Committee page styles */
+        .committee-page {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .committee-section {
+            margin-bottom: 60px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: transparent;
+            border-radius: 0;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: none;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-image-wrapper {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            position: relative;
+            cursor: pointer;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .profile-image-wrapper:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 5px;
+            line-height: 1.3;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-affiliation {
+            font-size: 0.9rem;
+            color: #f0f0f0;
+            font-weight: 400;
+            line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-     <nav class="navbar" id="navbar">
+    <!-- Top Navbar -->
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="../index.html" class="nav-logo">
                 <img src="../assets/images/logo.png" alt="SCES Logo">
@@ -16,58 +267,50 @@
             </a>
 
             <ul class="nav-menu" id="navMenu">
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="../index.html#about" class="nav-link">About</a></li>
-            <li><a href="../registration.html" class="nav-link">Registration</a></li>
-                <li><a href="./tutist-places.html" class="nav-link">Tourist Places</a></li>
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../registration.html" class="nav-link">Registration</a></li>
+                <li><a href="./tourist-places.html" class="nav-link">Tourist Places</a></li>
 
-                <!-- <li><a href="#dates" class="nav-link">call-for-paper</a></li> -->
                 <li class="nav-dropdown">
                     <a href="#" class="nav-link dropdown-toggle">
                         Submission Details
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6" />
                         </svg>
                     </a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="../sections/call-for-paper.html">Call for Paper</a>
-                        </li>
-                        <li>
-                            <a href="../sections/paper-submition-guidline.html"> Guideline for paper submission </a>
-                        </li>
-                        <li>
-                            <a href="../sections/camera-ready.html">Submit Camera Ready Paper</a>
-                        </li>
+                        <li><a href="../sections/call-for-paper.html">Call for Paper</a></li>
+                        <li><a href="../sections/paper-submition-guidline.html">Guideline for paper submission</a></li>
+                        <li><a href="../sections/camera-ready.html">Submit Camera Ready Paper</a></li>
                     </ul>
                 </li>
                 <li class="nav-dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">Committees <svg width="12" height="12"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <a href="#" class="nav-link dropdown-toggle">
+                        Committees
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6" />
-                        </svg></a>
+                        </svg>
+                    </a>
                     <ul class="dropdown-menu">
                         <li><a href="./conference-committee.html">Conference Committee</a></li>
                         <li><a href="./advisory-committee.html">Advisory Committee</a></li>
-                        <li><a href="#">Technical Program Committee</a>
-                        </li>
+                        <li><a href="#">Technical Program Committee</a></li>
                         <li><a href="./student-committee.html">Student Committee</a></li>
                     </ul>
                 </li>
                 <li class="nav-dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">Archives <svg width="12" height="12"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <a href="#" class="nav-link dropdown-toggle">
+                        Archives
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6" />
-                        </svg></a>
+                        </svg>
+                    </a>
                     <ul class="dropdown-menu">
-                        <li><a href="https://mnnit.ac.in/sces2024/Special_Session.html" target="_blank">SCES 2024</a>
-                        </li>
+                        <li><a href="https://mnnit.ac.in/sces2024/Special_Session.html" target="_blank">SCES 2024</a></li>
                         <li><a href="https://www.mnnit.ac.in/sces2022/" target="_blank">SCES 2022</a></li>
-                        <li><a href="https://mnnit.ac.in/sces2024/sces2020/index.html" target="_blank">SCES 2020</a>
-                        </li>
-                        <li><a href="https://mnnit.ac.in/sces2024/sces2019/index.html" target="_blank">SCES 2019</a>
-                        </li>
+                        <li><a href="https://mnnit.ac.in/sces2024/sces2020/index.html" target="_blank">SCES 2020</a></li>
+                        <li><a href="https://mnnit.ac.in/sces2024/sces2019/index.html" target="_blank">SCES 2019</a></li>
                     </ul>
                 </li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -82,44 +325,236 @@
         </div>
     </nav>
 
-    <div class="committee-table-page">
+    <div class="committee-page">
         <h1 class="page-title">Technical Program Committee (Tentative)</h1>
-        <div class="table-content">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Affiliation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Dr. Abhinandan De</td><td>IIEST Shibpur</td></tr>
-                    <tr><td>Dr. Dipankar Debnath</td><td>IIT Kharagpur</td></tr>
-                    <tr><td>Dr. Gururaj M. Vishwanath</td><td>IIT Kanpur</td></tr>
-                    <tr><td>Dr. Asha Sharma</td><td>IIT Roorkee</td></tr>
-                    <tr><td>Dr. Rajib Kumar Mandal</td><td>NIT Patna</td></tr>
-                    <tr><td>Dr. Mala De</td><td>NIT Patna</td></tr>
-                    <tr><td>Dr. Pavan Kumar Mishra</td><td>NIT Raipur</td></tr>
-                    <tr><td>Dr. Om Hari Gupta</td><td>NIT Jamshedpur</td></tr>
-                    <tr><td>Dr. Manu Vardhan</td><td>NIT Raipur</td></tr>
-                    <tr><td>Dr. Indrajit Sarkar</td><td>NIT Rourkela</td></tr>
-                    <tr><td>Dr. Suman M</td><td>NIT Tiruchirappalli</td></tr>
-                    <tr><td>Dr. Navdeep Singh</td><td>MM MUT Gorakhpur</td></tr>
-                    <tr><td>Dr. Mohammad Junaid Akhtar</td><td>BIT Mesra</td></tr>
-                    <tr><td>Dr. Dipu Sarkar</td><td>NIT Nagaland</td></tr>
-                    <tr><td>Dr. Dinesh Singh</td><td>MNNIT Allahabad</td></tr>
-                    <tr><td>Dr. Ashish Kumar Maurya</td><td>MNNIT Allahabad</td></tr>
-                    <tr><td>Dr. Mariana Resener</td><td>SFU, Canada</td></tr>
-                    <tr><td>Dr. Ram Chandra Bhushan</td><td>Alstom Transport India Limited</td></tr>
-                    <tr><td>Dr. Priyanshul Niranjan</td><td>L&T</td></tr>
-                    <tr><td>Dr. Parvez Ahmad</td><td>L&T</td></tr>
-                    <tr><td>Dr. Maneesh Kumar</td><td>NIT Kurukshetra</td></tr>
-                    <tr><td>Dr. Mahendra Kumar</td><td>NIT Jalandhar</td></tr>
-                    <tr><td>Dr. Saran Satsangi</td><td>NIT Patna</td></tr>
-                    <tr><td>Dr. Pushkar Prakash Arya</td><td>NIT Patna</td></tr>
-                    <tr><td>Dr. Ravi Bhushan</td><td>NIT Jamshedpur</td></tr>
-                </tbody>
-            </table>
+
+        <div class="committee-section">
+            <div class="cards-container">
+                <!-- Dr. Abhinandan De -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=AD" alt="Dr. Abhinandan De" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Abhinandan De</h3>
+                    <p class="profile-affiliation">IIEST Shibpur</p>
+                </div>
+
+                <!-- Dr. Dipankar Debnath -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=DD" alt="Dr. Dipankar Debnath" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Dipankar Debnath</h3>
+                    <p class="profile-affiliation">IIT Kharagpur</p>
+                </div>
+
+                <!-- Dr. Gururaj M. Vishwanath -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=GMV" alt="Dr. Gururaj M. Vishwanath" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Gururaj M. Vishwanath</h3>
+                    <p class="profile-affiliation">IIT Kanpur</p>
+                </div>
+
+                <!-- Dr. Asha Sharma -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=AS" alt="Dr. Asha Sharma" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Asha Sharma</h3>
+                    <p class="profile-affiliation">IIT Roorkee</p>
+                </div>
+
+                <!-- Dr. Rajib Kumar Mandal -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=RKM" alt="Dr. Rajib Kumar Mandal" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Rajib Kumar Mandal</h3>
+                    <p class="profile-affiliation">NIT Patna</p>
+                </div>
+
+                <!-- Dr. Mala De -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=MD" alt="Dr. Mala De" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Mala De</h3>
+                    <p class="profile-affiliation">NIT Patna</p>
+                </div>
+
+                <!-- Dr. Pavan Kumar Mishra -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=PKM" alt="Dr. Pavan Kumar Mishra" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Pavan Kumar Mishra</h3>
+                    <p class="profile-affiliation">NIT Raipur</p>
+                </div>
+
+                <!-- Dr. Om Hari Gupta -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=OHG" alt="Dr. Om Hari Gupta" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Om Hari Gupta</h3>
+                    <p class="profile-affiliation">NIT Jamshedpur</p>
+                </div>
+
+                <!-- Dr. Manu Vardhan -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=MV" alt="Dr. Manu Vardhan" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Manu Vardhan</h3>
+                    <p class="profile-affiliation">NIT Raipur</p>
+                </div>
+
+                <!-- Dr. Indrajit Sarkar -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=IS" alt="Dr. Indrajit Sarkar" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Indrajit Sarkar</h3>
+                    <p class="profile-affiliation">NIT Rourkela</p>
+                </div>
+
+                <!-- Dr. Suman M -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=SM" alt="Dr. Suman M" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Suman M</h3>
+                    <p class="profile-affiliation">NIT Tiruchirappalli</p>
+                </div>
+
+                <!-- Dr. Navdeep Singh -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=NS" alt="Dr. Navdeep Singh" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Navdeep Singh</h3>
+                    <p class="profile-affiliation">MM MUT Gorakhpur</p>
+                </div>
+
+                <!-- Dr. Mohammad Junaid Akhtar -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=MJA" alt="Dr. Mohammad Junaid Akhtar" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Mohammad Junaid Akhtar</h3>
+                    <p class="profile-affiliation">BIT Mesra</p>
+                </div>
+
+                <!-- Dr. Dipu Sarkar -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=DS" alt="Dr. Dipu Sarkar" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Dipu Sarkar</h3>
+                    <p class="profile-affiliation">NIT Nagaland</p>
+                </div>
+
+                <!-- Dr. Dinesh Singh -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=DS" alt="Dr. Dinesh Singh" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Dinesh Singh</h3>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+
+                <!-- Dr. Ashish Kumar Maurya -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=AKM" alt="Dr. Ashish Kumar Maurya" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Ashish Kumar Maurya</h3>
+                    <p class="profile-affiliation">MNNIT Allahabad</p>
+                </div>
+
+                <!-- Dr. Mariana Resener -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=MR" alt="Dr. Mariana Resener" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Mariana Resener</h3>
+                    <p class="profile-affiliation">SFU, Canada</p>
+                </div>
+
+                <!-- Dr. Ram Chandra Bhushan -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=RCB" alt="Dr. Ram Chandra Bhushan" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Ram Chandra Bhushan</h3>
+                    <p class="profile-affiliation">Alstom Transport India Limited</p>
+                </div>
+
+                <!-- Dr. Priyanshul Niranjan -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=PN" alt="Dr. Priyanshul Niranjan" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Priyanshul Niranjan</h3>
+                    <p class="profile-affiliation">L&T</p>
+                </div>
+
+                <!-- Dr. Parvez Ahmad -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=PA" alt="Dr. Parvez Ahmad" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Parvez Ahmad</h3>
+                    <p class="profile-affiliation">L&T</p>
+                </div>
+
+                <!-- Dr. Maneesh Kumar -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=MK" alt="Dr. Maneesh Kumar" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Maneesh Kumar</h3>
+                    <p class="profile-affiliation">NIT Kurukshetra</p>
+                </div>
+
+                <!-- Dr. Mahendra Kumar -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=MK" alt="Dr. Mahendra Kumar" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Mahendra Kumar</h3>
+                    <p class="profile-affiliation">NIT Jalandhar</p>
+                </div>
+
+                <!-- Dr. Saran Satsangi -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=SS" alt="Dr. Saran Satsangi" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Saran Satsangi</h3>
+                    <p class="profile-affiliation">NIT Patna</p>
+                </div>
+
+                <!-- Dr. Pushkar Prakash Arya -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=PPA" alt="Dr. Pushkar Prakash Arya" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Pushkar Prakash Arya</h3>
+                    <p class="profile-affiliation">NIT Patna</p>
+                </div>
+
+                <!-- Dr. Ravi Bhushan -->
+                <div class="profile-card">
+                    <div class="profile-image-wrapper">
+                        <img src="https://via.placeholder.com/120/667eea/ffffff?text=RB" alt="Dr. Ravi Bhushan" class="profile-image">
+                    </div>
+                    <h3 class="profile-name">Dr. Ravi Bhushan</h3>
+                    <p class="profile-affiliation">NIT Jamshedpur</p>
+                </div>
+            </div>
         </div>
     </div>
 
