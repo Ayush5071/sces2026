@@ -16,6 +16,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            padding: 0;
         }
 
         /* Navbar styles - Default minimal styling */
@@ -31,6 +32,7 @@
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -155,6 +157,7 @@
         .committee-page {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 20px;
         }
 
         .page-title {
@@ -181,43 +184,74 @@
 
         .cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
         .profile-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 20px 30px;
+            background: transparent;
+            border-radius: 0;
+            padding: 15px 10px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: none;
+            transition: transform 0.3s;
             position: relative;
         }
 
         .profile-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
         }
 
         .profile-image-wrapper {
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 25px;
+            width: 128px;
+            height: 128px;
+            margin: 0 auto 20px;
             position: relative;
             cursor: pointer;
             border-radius: 50%;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (min-width: 640px) {
+            .profile-image-wrapper {
+                width: 144px;
+                height: 144px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .profile-image-wrapper {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .profile-image-wrapper {
+                width: 176px;
+                height: 176px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .profile-image-wrapper {
+                width: 192px;
+                height: 192px;
+            }
         }
 
         .profile-image-wrapper:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .profile-image-wrapper::before {
@@ -240,22 +274,29 @@
         }
 
         .profile-name {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            color: #333;
-            margin-bottom: 10px;
+            color: #ffffff;
+            margin-bottom: 5px;
+            line-height: 1.3;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         .profile-designation {
-            font-size: 1rem;
-            color: #666;
+            font-size: 0.9rem;
+            color: #f0f0f0;
             font-weight: 500;
+            margin-bottom: 3px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .profile-affiliation {
-            font-size: 0.95rem;
-            color: #888;
-            margin-top: 5px;
+            font-size: 0.85rem;
+            color: #e8e8e8;
+            font-weight: 400;
+            line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
         }
 
         .single-card {
@@ -319,58 +360,50 @@
             </a>
 
             <ul class="nav-menu" id="navMenu">
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="../index.html#about" class="nav-link">About</a></li>
-            <li><a href="../registration.html" class="nav-link">Registration</a></li>
-                <li><a href="./tutist-places.html" class="nav-link">Tourist Places</a></li>
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../registration.html" class="nav-link">Registration</a></li>
+                <li><a href="./tourist-places.html" class="nav-link">Tourist Places</a></li>
 
-                <!-- <li><a href="#dates" class="nav-link">call-for-paper</a></li> -->
                 <li class="nav-dropdown">
                     <a href="#" class="nav-link dropdown-toggle">
                         Submission Details
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6" />
                         </svg>
                     </a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="../sections/call-for-paper.html">Call for Paper</a>
-                        </li>
-                        <li>
-                            <a href="../sections/paper-submition-guidline.html"> Guideline for paper submission </a>
-                        </li>
-                        <li>
-                            <a href="../sections/camera-ready.html">Submit Camera Ready Paper</a>
-                        </li>
+                        <li><a href="../sections/call-for-paper.html">Call for Paper</a></li>
+                        <li><a href="../sections/paper-submition-guidline.html">Guideline for paper submission</a></li>
+                        <li><a href="../sections/camera-ready.html">Submit Camera Ready Paper</a></li>
                     </ul>
                 </li>
                 <li class="nav-dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">Committees <svg width="12" height="12"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <a href="#" class="nav-link dropdown-toggle">
+                        Committees
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6" />
-                        </svg></a>
+                        </svg>
+                    </a>
                     <ul class="dropdown-menu">
-                        <li><a href="./conference-committee.html">Conference Committee</a></li>
-                        <li><a href="#">Advisory Committee</a></li>
-                        <li><a href="./technical-program-committee.html">Technical Program Committee</a>
-                        </li>
+                        <li><a href="#">Conference Committee</a></li>
+                        <li><a href="./advisory-committee.html">Advisory Committee</a></li>
+                        <li><a href="./technical-program-committee.html">Technical Program Committee</a></li>
                         <li><a href="./student-committee.html">Student Committee</a></li>
                     </ul>
                 </li>
                 <li class="nav-dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">Archives <svg width="12" height="12"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <a href="#" class="nav-link dropdown-toggle">
+                        Archives
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6" />
-                        </svg></a>
+                        </svg>
+                    </a>
                     <ul class="dropdown-menu">
-                        <li><a href="https://mnnit.ac.in/sces2024/Special_Session.html" target="_blank">SCES 2024</a>
-                        </li>
+                        <li><a href="https://mnnit.ac.in/sces2024/Special_Session.html" target="_blank">SCES 2024</a></li>
                         <li><a href="https://www.mnnit.ac.in/sces2022/" target="_blank">SCES 2022</a></li>
-                        <li><a href="https://mnnit.ac.in/sces2024/sces2020/index.html" target="_blank">SCES 2020</a>
-                        </li>
-                        <li><a href="https://mnnit.ac.in/sces2024/sces2019/index.html" target="_blank">SCES 2019</a>
-                        </li>
+                        <li><a href="https://mnnit.ac.in/sces2024/sces2020/index.html" target="_blank">SCES 2020</a></li>
+                        <li><a href="https://mnnit.ac.in/sces2024/sces2019/index.html" target="_blank">SCES 2019</a></li>
                     </ul>
                 </li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -393,8 +426,8 @@
             <h2 class="section-title">Patron</h2>
             <div class="cards-container single-card">
                 <div class="profile-card">
-                    <a href="https://www.mnnit.ac.in/profile/director" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/dir_img_250423.jpg" alt="Prof. Rama Shanker Verma" class="profile-image">
+                    <a href="https://www.mnnit.ac.in/index.php/institute/437-profile-prof-rs-verma" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/images/newstories/2022/dir_img_250423.jpeg" alt="Prof. Rama Shanker Verma" class="profile-image">
                     </a>
                     <h3 class="profile-name">Prof. Rama Shanker Verma</h3>
                     <p class="profile-designation">Director</p>
@@ -409,7 +442,7 @@
             <div class="cards-container">
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/nitins" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/NItin.jpg" alt="Prof. Nitin Singh" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/78922-NItin%20(1).jpg" alt="Prof. Nitin Singh" class="profile-image">
                     </a>
                     <h3 class="profile-name">Prof. Nitin Singh</h3>
                     <p class="profile-designation">Head, EED</p>
@@ -417,23 +450,23 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/mayankpandey" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/mayank.jpg" alt="Prof. Mayank Pandey" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/38279-29853-profilenew.jpg" alt="Prof. Mayank Pandey" class="profile-image">
                     </a>
                     <h3 class="profile-name">Prof. Mayank Pandey</h3>
                     <p class="profile-designation">Head, CSED</p>
                     <p class="profile-affiliation">MNNIT Allahabad</p>
                 </div>
                 <div class="profile-card">
-                    <a href="https://www.mnnit.ac.in/index.php/department/engineering/ee/eefp" target="_blank" class="profile-image-wrapper">
-                        <img src="https://via.placeholder.com/180/667eea/ffffff?text=AP" alt="Prof. Arun Prakash" class="profile-image">
+                    <a href="https://mnnit.ac.in/profile/previewa.php?id=1855" target="_blank" class="profile-image-wrapper">
+                        <img src="https://mnnit.ac.in/userprofile/uploads/55843-Image_new.jpg" alt="Prof. Arun Prakash" class="profile-image">
                     </a>
                     <h3 class="profile-name">Prof. Arun Prakash</h3>
                     <p class="profile-designation">ECED</p>
                     <p class="profile-affiliation">MNNIT Allahabad</p>
                 </div>
                 <div class="profile-card">
-                    <a href="https://www.mnnit.ac.in/index.php/department/engineering/ee/eefp" target="_blank" class="profile-image-wrapper">
-                        <img src="https://via.placeholder.com/180/667eea/ffffff?text=YKP" alt="Prof. Y. K. Prajapati" class="profile-image">
+                    <a href="https://mnnit.ac.in/profile/yogendrapra" target="_blank" class="profile-image-wrapper">
+                        <img src="https://mnnit.ac.in/userprofile/uploads/90076-J_YKP.jpg" alt="Prof. Y. K. Prajapati" class="profile-image">
                     </a>
                     <h3 class="profile-name">Prof. Y. K. Prajapati</h3>
                     <p class="profile-designation">ECED</p>
@@ -441,7 +474,7 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/deepak_kumar" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/001deepak.jpg" alt="Dr. Deepak Kumar" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/91190-001deepak.jpg" alt="Dr. Deepak Kumar" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Deepak Kumar</h3>
                     <p class="profile-designation">EED</p>
@@ -456,7 +489,7 @@
             <div class="cards-container">
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/rksingh" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/RKS.jpg" alt="Prof. R. K. Singh" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/22498-Prof.%20Ravindra%20Kumar%20Singh.JPG" alt="Prof. R. K. Singh" class="profile-image">
                     </a>
                     <h3 class="profile-name">Prof. R. K. Singh</h3>
                     <p class="profile-designation">EED</p>
@@ -464,7 +497,7 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/rktripathi" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/RKT.jpg" alt="Prof. R. K. Tripathi" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/RKT.jpg" alt="Prof. R. K. Tripathi" class="profile-image">
                     </a>
                     <h3 class="profile-name">Prof. R. K. Tripathi</h3>
                     <p class="profile-designation">EED</p>
@@ -472,7 +505,7 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/shubhi" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/Shubhi%20Purwar.jpg" alt="Prof. Shubhi Purwar" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/sp%20photo.jpg" alt="Prof. Shubhi Purwar" class="profile-image">
                     </a>
                     <h3 class="profile-name">Prof. Shubhi Purwar</h3>
                     <p class="profile-designation">EED</p>
@@ -480,7 +513,7 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/paul" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/Paulson.jpg" alt="Prof. Paulson Samuel" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/85326-PS.jpg" alt="Prof. Paulson Samuel" class="profile-image">
                     </a>
                     <h3 class="profile-name">Prof. Paulson Samuel</h3>
                     <p class="profile-designation">EED</p>
@@ -488,7 +521,7 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/asheesh" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/ak%20singh.jpg" alt="Prof. Asheesh K. Singh" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/AKS_pic.jpg" alt="Prof. Asheesh K. Singh" class="profile-image">
                     </a>
                     <h3 class="profile-name">Prof. Asheesh K. Singh</h3>
                     <p class="profile-designation">EED</p>
@@ -496,7 +529,7 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/rajeshgupta" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/R%20gupta.jpg" alt="Prof. Rajesh Gupta" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/89091-IMG-20220826-WA0010.jpg" alt="Prof. Rajesh Gupta" class="profile-image">
                     </a>
                     <h3 class="profile-name">Prof. Rajesh Gupta</h3>
                     <p class="profile-designation">EED</p>
@@ -504,7 +537,7 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/richa" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/R%20negi.jpg" alt="Prof. Richa Negi" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/17979-riiiii.JPG" alt="Prof. Richa Negi" class="profile-image">
                     </a>
                     <h3 class="profile-name">Prof. Richa Negi</h3>
                     <p class="profile-designation">EED</p>
@@ -519,7 +552,7 @@
             <div class="cards-container">
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/vkgaur" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/Vishal%20Kumar%20Gaur.jpg" alt="Dr. Vishal K. Gaur" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/94216-Vishal%20TIET%20Photo311.jpeg" alt="Dr. Vishal K. Gaur" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Vishal K. Gaur</h3>
                     <p class="profile-designation">EED</p>
@@ -527,7 +560,7 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/arvindk" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/pra.jpg" alt="Dr. Arvind K. Prajapati" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/arvind%20new(1).jpg" alt="Dr. Arvind K. Prajapati" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Arvind K. Prajapati</h3>
                     <p class="profile-designation">EED</p>
@@ -542,7 +575,7 @@
             <div class="cards-container">
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/niraj" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/neeraj%20k%20chaudhary.jpg" alt="Dr. Niraj Kumar Choudhary" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/23482-Niraj_image.jpg" alt="Dr. Niraj Kumar Choudhary" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Niraj Kumar Choudhary</h3>
                     <p class="profile-designation">EED</p>
@@ -550,7 +583,7 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/navneet" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/navneet.jpg" alt="Dr. Navneet Kumar Singh" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/navneet_PP_small.jpg" alt="Dr. Navneet Kumar Singh" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Navneet Kumar Singh</h3>
                     <p class="profile-designation">EED</p>
@@ -565,7 +598,7 @@
             <div class="cards-container">
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/satnesh" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/SATNESH.jpg" alt="Dr. Satnesh Singh" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/56277-Satnesh%20pic.jpg" alt="Dr. Satnesh Singh" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Satnesh Singh</h3>
                     <p class="profile-designation">EED</p>
@@ -573,7 +606,7 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/slakshmi" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/Dr.%20Shubh%20lakshi.jpg" alt="Dr. Shubh Lakshmi" class="profile-image">
+                        <img src="data:image/jpeg;base64,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" alt="Dr. Shubh Lakshmi" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Shubh Lakshmi</h3>
                     <p class="profile-designation">EED</p>
@@ -587,8 +620,8 @@
             <h2 class="section-title">Technical Program Chair(s)</h2>
             <div class="cards-container">
                 <div class="profile-card">
-                    <a href="https://www.mnnit.ac.in/profile/prashanttiwari" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/1568906996011%20Photo%20Dr.%20Prashant%20Kumar%20Tiwari.jpg" alt="Dr. Prashant K. Tiwari" class="profile-image">
+                    <a href="https://mnnit.ac.in/profile/previewr.php?id=1632" target="_blank" class="profile-image-wrapper">
+                        <img src="https://mnnit.ac.in/userprofile/uploads/74224-Photo_Dr.%20Prashant%20Kumar%20Tiwari%20(1).jpg" alt="Dr. Prashant K. Tiwari" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Prashant K. Tiwari</h3>
                     <p class="profile-designation">EED</p>
@@ -596,7 +629,7 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/ranvijay" target="_blank" class="profile-image-wrapper">
-                        <img src="https://via.placeholder.com/180/667eea/ffffff?text=Ranvijay" alt="Dr. Ranvijay" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/68081-me.jpg" alt="Dr. Ranvijay" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Ranvijay</h3>
                     <p class="profile-designation">CSED</p>
@@ -604,7 +637,7 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/jagat" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/Jagat.jpg" alt="Dr. Jagat Jyoti Rath" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/51688-Jagat_Pic.jpg" alt="Dr. Jagat Jyoti Rath" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Jagat Jyoti Rath</h3>
                     <p class="profile-designation">EED</p>
@@ -619,7 +652,7 @@
             <div class="cards-container">
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/souradipde" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/Dr.%20Souradip.jpg" alt="Dr. Souradip De" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/79446-SOURADIP%20DE.JPG" alt="Dr. Souradip De" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Souradip De</h3>
                     <p class="profile-designation">EED</p>
@@ -627,15 +660,15 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/kapilchauhan" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/kapilchauhan.jpg" alt="Dr. Kapil Chauhan" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/96770-KChauhan-fotor-202309091235.png" alt="Dr. Kapil Chauhan" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Kapil Chauhan</h3>
                     <p class="profile-designation">EED</p>
                     <p class="profile-affiliation">MNNIT Allahabad</p>
                 </div>
                 <div class="profile-card">
-                    <a href="https://www.mnnit.ac.in/index.php/department/engineering/ee/eefp" target="_blank" class="profile-image-wrapper">
-                        <img src="https://via.placeholder.com/180/667eea/ffffff?text=DA" alt="Dr. Dheeraj Ahuja" class="profile-image">
+                    <a href="https://mnnit.ac.in/profile/dheerajahuja" target="_blank" class="profile-image-wrapper">
+                        <img src="https://mnnit.ac.in/userprofile/uploads/7686-final%20to%20Upload%20IICHE%202.jpg" alt="Dr. Dheeraj Ahuja" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Dheeraj Ahuja</h3>
                     <p class="profile-designation">ChED</p>
@@ -650,12 +683,8 @@
             <div class="cards-container single-card">
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/b.lokeshgupta" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/Bhamindi.jpg" alt="Dr. Bhamidi Lokeshgupta" class="profile-image">
-                    </a>
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/82814-20250205_212906.jpg" alt="Dr. Bhamidi Lokeshgupta" class="profile-image">
                     <h3 class="profile-name">Dr. Bhamidi Lokeshgupta</h3>
-                    <p class="profile-designation">EED</p>
-                    <p class="profile-affiliation">MNNIT Allahabad</p>
-                </div>
             </div>
         </div>
 
@@ -664,8 +693,8 @@
             <h2 class="section-title">Finance Chair(s)</h2>
             <div class="cards-container single-card">
                 <div class="profile-card">
-                    <a href="https://www.mnnit.ac.in/profile/saumendras" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/SAUMENDRA%20SARANGI.jpg" alt="Dr. Saumendra Sarangi" class="profile-image">
+                    <a href="https://mnnit.ac.in/profile/ssarangi" target="_blank" class="profile-image-wrapper">
+                        <img src="https://mnnit.ac.in/userprofile/uploads/32286-upload.jpg" alt="Dr. Saumendra Sarangi" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Saumendra Sarangi</h3>
                     <p class="profile-designation">EED</p>
@@ -680,15 +709,15 @@
             <div class="cards-container">
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/sarsij" target="_blank" class="profile-image-wrapper">
-                        <img src="https://via.placeholder.com/180/667eea/ffffff?text=ST" alt="Dr. Sarsij Tripathi" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/50378-16472-sarsij.jpg" alt="Dr. Sarsij Tripathi" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Sarsij Tripathi</h3>
                     <p class="profile-designation">CSED</p>
                     <p class="profile-affiliation">MNNIT Allahabad</p>
                 </div>
                 <div class="profile-card">
-                    <a href="https://www.mnnit.ac.in/profile/doggar" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/Dr.%20Dogga%20Raveendra.jpg" alt="Dr. Dogga Raveendhra" class="profile-image">
+                    <a href="https://mnnit.ac.in/profile/raveendogga" target="_blank" class="profile-image-wrapper">
+                        <img src="https://mnnit.ac.in/userprofile/uploads/31529-40260-Dogga_Pic%20(1).jpg" alt="Dr. Dogga Raveendhra" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Dogga Raveendhra</h3>
                     <p class="profile-designation">EED</p>
@@ -702,8 +731,8 @@
             <h2 class="section-title">Hospitality Chair</h2>
             <div class="cards-container">
                 <div class="profile-card">
-                    <a href="https://www.mnnit.ac.in/index.php/department/engineering/ee/eefp" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/vinayak.jpg" alt="Dr. M. Venkatesh Naik" class="profile-image">
+                    <a href="https://www.mnnit.ac.in/profile/venkateshn" target="_blank" class="profile-image-wrapper">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/29581-Photo%20.jpg" alt="Dr. M. Venkatesh Naik" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. M. Venkatesh Naik</h3>
                     <p class="profile-designation">EED</p>
@@ -711,7 +740,7 @@
                 </div>
                 <div class="profile-card">
                     <a href="https://www.mnnit.ac.in/profile/dipayan" target="_blank" class="profile-image-wrapper">
-                        <img src="https://www.mnnit.ac.in/userprofile/images/guha%20pic.jpg" alt="Dr. Dipayan Guha" class="profile-image">
+                        <img src="https://www.mnnit.ac.in/userprofile/uploads/92983-guha_photo.jpg" alt="Dr. Dipayan Guha" class="profile-image">
                     </a>
                     <h3 class="profile-name">Dr. Dipayan Guha</h3>
                     <p class="profile-designation">EED</p>
