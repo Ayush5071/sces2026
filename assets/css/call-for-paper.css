@@ -80,6 +80,130 @@
     color: #78350f;
 }
 
+/* Paper Submission Portal */
+.submission-portal {
+    margin-top: 3rem;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 0.75rem;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.submission-portal h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+}
+
+.submission-portal .portal-intro {
+    font-size: 1rem;
+    color: #52525b;
+    line-height: 1.7;
+    max-width: 750px;
+    margin: 0 auto 1.75rem;
+}
+
+.submit-paper-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #1e3a8a;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.9rem 1.75rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.submit-paper-btn:hover {
+    background: #1e40af;
+    transform: translateY(-2px);
+}
+
+.page-limit-note {
+    margin: 1.75rem auto 0;
+    max-width: 800px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #b91c1c;
+    line-height: 1.7;
+}
+
+/* Paper Templates */
+.paper-templates {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.paper-templates h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.paper-templates .templates-intro {
+    font-size: 1rem;
+    color: #52525b;
+    margin-bottom: 2rem;
+}
+
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.template-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.template-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(107, 33, 168, 0.12);
+}
+
+.template-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.4rem;
+}
+
+.template-card p {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 1.25rem;
+}
+
+.template-btn {
+    display: inline-block;
+    border: 1px solid #6b21a8;
+    color: #6b21a8;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.55rem 1.5rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.template-btn:hover {
+    background: #6b21a8;
+    color: #ffffff;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .call-for-paper-page .page-title {
@@ -88,5 +212,9 @@
 
     .track-card {
         padding: 1.5rem;
+    }
+
+    .submission-portal {
+        padding: 2rem 1.25rem;
     }
 }
