@@ -12,7 +12,31 @@
     <link rel="stylesheet" href="../assets/css/camera-ready.css">
 </head>
 
-<body>
+<body class="has-ticker">
+
+    <!-- ================= ANNOUNCEMENT TICKER ================= -->
+    <div class="announcement-ticker" role="region" aria-label="Latest announcements">
+        <div class="ticker-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z" />
+                <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+                <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+            </svg>
+            <span>Latest</span>
+        </div>
+        <div class="ticker-viewport">
+            <div class="ticker-track">
+                <div class="ticker-group">
+                    <a class="ticker-item" href="./call-for-special-session.html">
+                        <span class="ticker-dot"></span>
+                        Call for Special Session: Last Date &ndash; 10 September 2026
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 <!-- ================= NAVBAR ================= -->
 <nav class="navbar" id="navbar">
@@ -50,6 +74,20 @@
                     </ul>
                 </li>
                 <li class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">
+                        Special Session
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./call-for-special-session.html">Call for Special Session</a></li>
+                        <li><a href="./call-for-papers-in-special-sessions.html">Call for Papers in Special
+                                Sessions</a></li>
+                    </ul>
+                </li>
+                <li class="nav-dropdown">
                     <a href="#" class="nav-link dropdown-toggle">Committees <svg width="12" height="12"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6" />
@@ -78,7 +116,7 @@
                     </ul>
                 </li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li><a href="registration.html" class="nav-btn">Register Now</a></li>
+                <li><a href="../registration.html" class="nav-btn">Register Now</a></li>
             </ul>
 
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
@@ -202,3 +240,8 @@
     </div>
 
 </section>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

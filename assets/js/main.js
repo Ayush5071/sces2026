@@ -3,6 +3,10 @@
  * JavaScript for interactive functionality
  */
 
+// Width at which the navbar collapses into the mobile drawer.
+// Keep in sync with the @media (max-width: 1280px) block in styles.css.
+const DESKTOP_BREAKPOINT = 1280;
+
 document.addEventListener('DOMContentLoaded', function() {
     // ===============================================
     // NAVBAR FUNCTIONALITY
@@ -40,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // For mobile: click to toggle
         toggle.addEventListener('click', function(e) {
-            if (window.innerWidth <= 1024) {
+            if (window.innerWidth <= DESKTOP_BREAKPOINT) {
                 e.preventDefault();
                 dropdown.classList.toggle('active');
                 
@@ -57,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close mobile menu when clicking a link
     document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(link => {
         link.addEventListener('click', function() {
-            if (window.innerWidth <= 1024) {
+            if (window.innerWidth <= DESKTOP_BREAKPOINT) {
                 mobileToggle.classList.remove('active');
                 navMenu.classList.remove('active');
                 document.body.style.overflow = '';
@@ -251,20 +255,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ===============================================
-    // ANNOUNCEMENT BAR PAUSE ON HOVER
+    // ANNOUNCEMENT TICKER
     // ===============================================
+    // Hover/focus pausing is handled in CSS. Here we only make sure the
+    // marquee loops seamlessly: the track holds two identical groups and
+    // scrolls exactly half its width, so the duplicate must always exist.
     
-    const announcementBar = document.querySelector('.announcement-bar');
-    const announcementContent = document.querySelector('.announcement-content');
+    const tickerTrack = document.querySelector('.ticker-track');
     
-    if (announcementBar && announcementContent) {
-        announcementBar.addEventListener('mouseenter', () => {
-            announcementContent.style.animationPlayState = 'paused';
-        });
-        
-        announcementBar.addEventListener('mouseleave', () => {
-            announcementContent.style.animationPlayState = 'running';
-        });
+    if (tickerTrack && tickerTrack.children.length === 1) {
+        const clone = tickerTrack.firstElementChild.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.querySelectorAll('a').forEach(a => a.setAttribute('tabindex', '-1'));
+        tickerTrack.appendChild(clone);
     }
     
     // ===============================================
