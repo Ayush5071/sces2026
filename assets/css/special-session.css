@@ -351,3 +351,46 @@
         font-size: 1.1rem;
     }
 }
+
+/* ---------- Special Session Brochure page ---------- */
+.ss-brochure {
+    scroll-margin-top: 110px;
+}
+
+.ss-brochure:target {
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.35);
+}
+
+.ss-brochure-no {
+    display: inline-block;
+    background: #fef3c7;
+    color: #b45309;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    margin-bottom: 0.6rem;
+}
+
+.ss-brochure-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.ss-brochure-table th,
+.ss-brochure-table td {
+    text-align: left;
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+}
+
+.ss-brochure-table th {
+    color: #6b21a8;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}

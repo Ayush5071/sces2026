@@ -1894,3 +1894,20 @@ button:focus {
         color: black;
     }
 }
+
+/* Hero: "Click to submit your paper" link */
+.hero-submit-link {
+    margin-top: 1.25rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.hero-submit-link a {
+    color: var(--accent-yellow);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.hero-submit-link a:hover {
+    color: #fff;
+}

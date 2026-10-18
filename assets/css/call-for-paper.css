@@ -218,3 +218,98 @@
         padding: 2rem 1.25rem;
     }
 }
+
+/* ===============================================
+   Two-column layout: Technical Tracks | Special Session Tracks
+   =============================================== */
+.call-for-paper-page {
+    max-width: 1280px;
+}
+
+.cfp-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.cfp-col-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 3px solid #9333ea;
+}
+
+.cfp-col:nth-child(2) .cfp-col-title {
+    border-bottom-color: #f59e0b;
+}
+
+/* Special session tracks */
+.ss-track {
+    background: #ffffff;
+    border-radius: 0.75rem;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.75rem;
+    border-left: 5px solid #f59e0b;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ss-track:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.18);
+}
+
+.ss-track-no {
+    display: inline-block;
+    background: #fef3c7;
+    color: #b45309;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    margin-bottom: 0.6rem;
+}
+
+.ss-track h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+}
+
+.ss-track h3 a {
+    color: #581c87;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.ss-track h3 a:hover {
+    color: #b45309;
+}
+
+.ss-track-orgs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ss-track-orgs li {
+    font-size: 0.9rem;
+    color: #3f3f46;
+    line-height: 1.6;
+    margin-bottom: 0.35rem;
+}
+
+.ss-track-orgs strong {
+    color: #1e293b;
+}
+
+@media (max-width: 900px) {
+    .cfp-columns {
+        grid-template-columns: 1fr;
+    }
+}
