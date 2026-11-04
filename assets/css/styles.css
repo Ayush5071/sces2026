@@ -1403,6 +1403,104 @@ img.nav-logo,
     margin-top: 1.25rem;
 }
 
+/* Special session tracks (home page) */
+.ss-subheader {
+    text-align: center;
+    margin: 4rem 0 2.5rem;
+}
+
+.ss-subtitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 0.75rem;
+}
+
+.ss-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.ss-card {
+    background: var(--white);
+    padding: 1.75rem 2rem;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    border-left: 5px solid var(--accent-gold);
+    transition: var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ss-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-purple);
+}
+
+.ss-card-no {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--accent-gold);
+    color: var(--gray-900);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    margin-bottom: 0.9rem;
+}
+
+.ss-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--gray-900);
+    margin-bottom: 0.9rem;
+}
+
+.ss-card h4 a {
+    color: var(--primary-purple);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.ss-card h4 a:hover {
+    opacity: 0.8;
+}
+
+.ss-card-orgs {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+}
+
+.ss-card-orgs li {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin-bottom: 0.3rem;
+}
+
+.ss-card-orgs strong {
+    color: var(--gray-900);
+}
+
+.ss-card-download {
+    margin-top: auto;
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--gradient-purple);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+}
+
+.ss-card-download:hover {
+    opacity: 0.9;
+}
+
 @media (max-width: 1024px) {
     .tracks-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1410,7 +1508,8 @@ img.nav-logo,
 }
 
 @media (max-width: 640px) {
-    .tracks-grid {
+    .tracks-grid,
+    .ss-grid {
         grid-template-columns: 1fr;
     }
 }

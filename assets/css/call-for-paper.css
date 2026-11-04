@@ -308,6 +308,23 @@
     color: #1e293b;
 }
 
+.ss-download {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.35rem 0.9rem;
+    background: #581c87;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.ss-download:hover {
+    background: #b45309;
+}
+
 @media (max-width: 900px) {
     .cfp-columns {
         grid-template-columns: 1fr;
